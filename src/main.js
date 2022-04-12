@@ -46,13 +46,12 @@ window.onbeforeunload = () => {
     localStorage.setItem('x', string)
 }
 $(document).on('keypress', (e) => {
-    if (e.target === $input[0]) {
-        e.preventDefault()
-    }
     const key = e.key
-    hashMap.forEach((node) => {
-        if (node.logo.toLowerCase() === key || node.logo === key) {
-            window.open(node.url, '_self')
-        }
-    });
+    if (e.target !== $input[0]) {
+        hashMap.forEach((node) => {
+            if (node.logo.toLowerCase() === key || node.logo === key) {
+                window.open(node.url, '_self')
+            }
+        });
+    }
 })
