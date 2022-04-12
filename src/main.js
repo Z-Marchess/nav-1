@@ -1,4 +1,5 @@
 const $lastLi = $('.last')
+const $input = $('.searchForm input')
 const x = localStorage.getItem('x')
 const xObject = JSON.parse(x)
 const hashMap = xObject || [
@@ -45,9 +46,14 @@ window.onbeforeunload = () => {
     localStorage.setItem('x', string)
 }
 $(document).on('keypress', (e) => {
+    if (e.target === $input[0]) {
+        e.preventDefault()
+        console.log(e.target);
+    }
     const key = e.key
     hashMap.forEach((node) => {
-        if (node.logo.toLowerCase() === key) {
+        if (node.logo.toLowerCase() === key || node.logo === key) {
+            console.log(key);
             window.open(node.url, '_self')
         }
     });
