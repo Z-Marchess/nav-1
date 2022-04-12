@@ -48,12 +48,10 @@ window.onbeforeunload = () => {
 $(document).on('keypress', (e) => {
     if (e.target === $input[0]) {
         e.preventDefault()
-        console.log(e.target);
     }
     const key = e.key
     hashMap.forEach((node) => {
         if (node.logo.toLowerCase() === key || node.logo === key) {
-            console.log(key);
             window.open(node.url, '_self')
         }
     });
