@@ -1,8 +1,8 @@
 const $lastLi = $('.last')
 const $input = $('.searchForm input')
-const x = localStorage.getItem('x')
-const xObject = JSON.parse(x)
-const hashMap = xObject || [
+const urlString = localStorage.getItem('urlString')
+const urlObject = JSON.parse(urlString)
+const hashMap = urlObject || [
     { logo: 'A', url: 'https://www.acfun.cn' },
     { logo: 'B', url: 'https://www.bilibili.com' },
 ]
@@ -43,7 +43,7 @@ $lastLi.on('click', () => {
 })
 window.onbeforeunload = () => {
     const string = JSON.stringify(hashMap)
-    localStorage.setItem('x', string)
+    localStorage.setItem('urlString', string)
 }
 $(document).on('keypress', (e) => {
     const key = e.key
